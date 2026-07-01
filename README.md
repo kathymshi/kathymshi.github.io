@@ -19,7 +19,7 @@ Write a couple of sentences about who you are, what you work on, and what you're
 
 📧 [Email](mailto:kathy.shi@yale.edu)
 
-📄 [CV](CV.pdf)
+📄 [CV](assets/Shi_Kathy_CV.docx)
 
 🎓 [Google Scholar](https://scholar.google.com/citations?user=JUa-7bwAAAAJ&hl=en)
 
