@@ -6,7 +6,7 @@
 
 <img src="assets/profile.jpg" width="160" style="border-radius:50%;" alt="Profile photo"/>
 
-# Your Name
+# Kathy M Shi
 
 ### About Me
 
@@ -19,13 +19,13 @@ Write a couple of sentences about who you are, what you work on, and what you're
 
 **Links**
 
-📧 [Email](mailto:you@example.com)
+📧 [Email](mailto:kathy.shi@yale.edu)
 
-📄 [CV](CV.pdf)
+📄 [CV](assets/Shi_Kathy_CV)
 
-🎓 [Google Scholar](https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID)
+🎓 [Google Scholar](https://scholar.google.com/citations?user=JUa-7bwAAAAJ&hl=en)
 
-💻 [GitHub](https://github.com/yourusername)
+💻 [GitHub](https://github.com/kathymshi)
 
 </div>
 
