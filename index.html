@@ -94,6 +94,57 @@
       font-size: 1.3rem;
     }
 
+    .email-pill {
+      position: relative;
+      justify-content: space-between;
+    }
+
+    .email-text {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.2rem;
+      display: flex;
+      align-items: center;
+      color: #6b6b6b;
+      flex-shrink: 0;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      background: #e2e2e2;
+      color: #1a1a1a;
+    }
+
+    .copy-tooltip {
+      position: absolute;
+      right: 0;
+      top: -2.2rem;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .copy-tooltip.visible {
+      opacity: 1;
+    }
+
     @media (max-width: 640px) {
       .card {
         flex-direction: column;
@@ -141,12 +192,23 @@
         <p class="subtitle">Your title or field — e.g. PhD Candidate, Computer Science</p>
         <p class="about-text">
           <!-- Fill this section out -->
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Write a couple of sentences about who you are, what you work on, and what you're interested in.
         </p>
       </div>
 
       <div class="links-column">
-        <a class="link-pill" href="mailto:you@example.com"><span class="icon">📧</span> you@example.com</a>
+        <div class="link-pill email-pill" data-email="you@example.com">
+          <a href="mailto:you@example.com" class="email-text" style="color: inherit; text-decoration: none;">
+            <span class="icon">📧</span> you@example.com
+          </a>
+          <button class="copy-btn" onclick="copyEmail(this)" aria-label="Copy email address" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M3 10.5V3.5C3 2.67157 3.67157 2 4.5 2H10.5" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+          </button>
+          <span class="copy-tooltip">Copied!</span>
+        </div>
         <a class="link-pill" href="CV.pdf"><span class="icon">📄</span> CV</a>
         <a class="link-pill" href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"><span class="icon">🎓</span> Google Scholar</a>
         <a class="link-pill" href="https://github.com/yourusername">
@@ -167,6 +229,16 @@
       </div>
     </div>
   </div>
+  <script>
+    function copyEmail(btn) {
+      const email = btn.parentElement.dataset.email;
+      navigator.clipboard.writeText(email).then(() => {
+        const tooltip = btn.parentElement.querySelector('.copy-tooltip');
+        tooltip.classList.add('visible');
+        setTimeout(() => tooltip.classList.remove('visible'), 1500);
+      });
+    }
+  </script>
 
 </body>
 </html>
