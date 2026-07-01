@@ -15,73 +15,66 @@
     }
 
     .page-wrap {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 6rem 2rem;
+      padding: 4rem 2rem;
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
     }
 
-    .card {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3.5rem;
-      align-items: flex-start;
+    /* ---- Sidebar (always visible, sticky) ---- */
+    .sidebar {
+      flex: 0 0 260px;
+      position: sticky;
+      top: 3rem;
       background: #ffffff;
       border: 1px solid #eaeaea;
       border-radius: 20px;
-      padding: 3.5rem;
+      padding: 2.25rem 1.75rem;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+      text-align: center;
     }
 
     .profile-photo {
-      width: 192px;
-      height: 192px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      flex-shrink: 0;
       border: 4px solid #f0f0f0;
+      margin: 0 auto 1.25rem auto;
+      display: block;
     }
 
-    .main-content {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .main-content h1 {
-      margin: 0 0 0.4rem 0;
-      font-size: 2.5rem;
+    .sidebar h1 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.5rem;
       font-weight: 700;
     }
 
-    .subtitle {
+    .sidebar .subtitle {
       color: #6b6b6b;
       margin: 0 0 1.5rem 0;
-      font-size: 1.2rem;
-    }
-
-    .about-text {
-      line-height: 1.7;
-      color: #333;
-      margin: 0;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .links-column {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
-      min-width: 220px;
+      gap: 0.7rem;
+      text-align: left;
     }
 
     .link-pill {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.9rem 1.3rem;
+      gap: 0.65rem;
+      padding: 0.75rem 1rem;
       background: #f5f5f5;
       border-radius: 12px;
       text-decoration: none;
       color: #1a1a1a;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 500;
       transition: background 0.15s ease, transform 0.15s ease;
     }
@@ -92,21 +85,26 @@
     }
 
     .link-pill .icon {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
     }
 
     .email-pill {
       position: relative;
+      flex-wrap: nowrap;
       justify-content: space-between;
     }
 
     .email-text {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      min-width: 0;
+      flex: 1 1 auto;
     }
 
     .copy-btn {
@@ -146,38 +144,148 @@
       opacity: 1;
     }
 
-    @media (max-width: 640px) {
-      .card {
+    /* ---- Main content area ---- */
+    .content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .top-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #8a8a8a;
+      padding: 0.75rem 0.25rem;
+      margin-right: 1.5rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+      font-family: inherit;
+    }
+
+    .top-nav button:hover {
+      color: #1a1a1a;
+    }
+
+    .top-nav button.active {
+      color: #1a1a1a;
+      border-bottom-color: #1a1a1a;
+    }
+
+    .panel {
+      display: none;
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .about-text {
+      line-height: 1.7;
+      color: #333;
+      margin: 0 0 1.6rem 0;
+      font-size: 1.1rem;
+    }
+
+    .about-text.tight {
+      margin-bottom: 0.6rem;
+    }
+
+    .about-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-text a {
+      color: inherit;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .about-list {
+      margin: 0;
+      padding-left: 1.3rem;
+      line-height: 1.7;
+      color: #333;
+      font-size: 1.1rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .panel h2 {
+      margin: 0 0 1.5rem 0;
+      font-size: 1.4rem;
+    }
+
+    .pub-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      margin: 0 0 0.3rem 0;
+      font-size: 1.05rem;
+    }
+
+    .pub-meta {
+      color: #666;
+      font-size: 0.95rem;
+      margin: 0 0 0.3rem 0;
+    }
+
+    .pub-item a {
+      color: inherit;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .page-wrap {
         flex-direction: column;
-        padding: 2rem;
       }
-      .links-column {
+      .sidebar {
+        position: static;
         width: 100%;
+        flex: none;
+        box-sizing: border-box;
       }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 500px) {
       .page-wrap {
-        padding: 2.5rem 1rem;
+        padding: 2rem 1rem;
       }
-      .card {
+      .sidebar {
+        padding: 1.75rem 1.25rem;
+      }
+      .panel {
         padding: 1.5rem;
-        gap: 1.5rem;
-        text-align: center;
       }
-      .profile-photo {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
-      }
-      .main-content h1 {
-        font-size: 1.75rem;
-      }
-      .subtitle {
-        font-size: 1rem;
-      }
-      .about-text {
-        font-size: 1rem;
+      .top-nav button {
+        font-size: 0.9rem;
+        margin-right: 1rem;
       }
     }
   </style>
@@ -185,35 +293,13 @@
 <body>
 
   <div class="page-wrap">
-    <div class="card">
-      <img class="profile-photo" src="assets/profile.jpg" alt="Profile photo">
 
-      <div class="main-content">
-        <h1>Kathy M Shi</h1>
-        <p class="subtitle">PhD Candidate, Psychology</p>
-        <p class="about-text">
-          I am a fourth-year PhD student working with <a href="https://rutledgelab.org/">Dr. Robb Rutledge</a> and <a href="https://medicine.yale.edu/lab/goldfarb/">Dr. Elizabeth Goldfarb</a> at Yale University. I am supported by the Yale Psychology department and the <a href="https://wti.yale.edu/initiatives/graduate-fellowships">Wu Tsai Graduate Student Fellowship</a>.
-        </p>
-        <p class="about-text">
-          I am interested in the confluence of emotion and cognition. My research spans a diverse range of topics to probe this broad question, leveraging the power of computational modeling and natural language processing to precisely quantify these relationships.
-        </p>
-        <p class="about-text">
-          A highlight of my current projects:
-        </p>
-        <ul class="about-list">
-          <li>How do changing goals change decision making and emotion?</li>
-          <li>How does dopamine affect decisions and emotions evoked by music?</li>
-          <li>How does sleep affect decisions and emotions in a depressed population?</li>
-          <li>How does stress affect free recall memory and its relationship to other types of memory?</li>
-        </ul>
-        <p class="about-text">
-          Prior to the PhD program, I worked with <a href="https://jchenlab.johnshopkins.edu/">Dr. Janice Chen</a>, <a href="https://www.hopkinspsychedelic.org/barrett">Dr. Frederick Barrett</a>, and <a href="https://bakkerlab.johnshopkins.edu/">Dr. Arnold Bakker</a> at the Johns Hopkins University. I graduated with honors in both neuroscience and cognitive science, with a focus in computational approaches to cognition and linguistics.
-        </p>
-        <p class="about-text">
-          Outside of the lab, I enjoy rock climbing, cooking, and jamming with friends.
-        </p>
-      </div>
- 
+    <!-- Sidebar: photo + links, always visible -->
+    <div class="sidebar">
+      <img class="profile-photo" src="assets/profile.jpg" alt="Profile photo">
+      <h1>Kathy M Shi</h1>
+      <p class="subtitle">PhD Candidate, Psychology</p>
+
       <div class="links-column">
         <div class="link-pill email-pill" data-email="kathy.shi@yale.edu">
           <a href="mailto:kathy.shi@yale.edu" class="email-text" style="color: inherit; text-decoration: none;">
@@ -256,7 +342,60 @@
         </a>
       </div>
     </div>
+
+    <!-- Main content: tabs + panels -->
+    <div class="content">
+      <div class="top-nav">
+        <button class="nav-btn active" data-target="home" onclick="showPanel('home', this)">Home</button>
+        <button class="nav-btn" data-target="publications" onclick="showPanel('publications', this)">Selected Publications</button>
+        <button class="nav-btn" data-target="projects" onclick="showPanel('projects', this)">Current Projects</button>
+      </div>
+
+      <!-- Home / About Me -->
+      <div class="panel active" id="home">
+        <p class="about-text">
+          I am a fourth-year PhD student working with <a href="https://rutledgelab.org/">Dr. Robb Rutledge</a> and <a href="https://medicine.yale.edu/lab/goldfarb/">Dr. Elizabeth Goldfarb</a> at Yale University. I am supported by the Yale Psychology department and the <a href="https://wti.yale.edu/initiatives/graduate-fellowships">Wu Tsai Graduate Student Fellowship</a>.
+        </p>
+        <p class="about-text">
+          I am interested in the confluence of emotion and cognition. My research spans a diverse range of topics to probe this broad question, leveraging the power of computational modeling and natural language processing to precisely quantify these relationships.
+        </p>
+        <p class="about-text">
+          Prior to the PhD program, I worked with <a href="https://jchenlab.johnshopkins.edu/">Dr. Janice Chen</a>, <a href="https://www.hopkinspsychedelic.org/barrett">Dr. Frederick Barrett</a>, and <a href="https://bakkerlab.johnshopkins.edu/">Dr. Arnold Bakker</a> at the Johns Hopkins University. I graduated with honors in both neuroscience and cognitive science, with a focus in computational approaches to cognition and linguistics.
+        </p>
+        <p class="about-text">
+          Outside of the lab, I enjoy rock climbing, cooking, and jamming with friends.
+        </p>
+      </div>
+
+      <!-- Selected Publications -->
+      <div class="panel" id="publications">
+        <h2>Selected Publications</h2>
+
+        <!-- Fill in your publications below. Duplicate the .pub-item block for each one. -->
+        <div class="pub-item">
+          <p class="pub-title"><a href="#">Title of publication goes here</a></p>
+          <p class="pub-meta">Shi, K. M., Author Two, Author Three. <em>Journal Name</em>, Year.</p>
+        </div>
+        <div class="pub-item">
+          <p class="pub-title"><a href="#">Title of publication goes here</a></p>
+          <p class="pub-meta">Shi, K. M., Author Two, Author Three. <em>Journal Name</em>, Year.</p>
+        </div>
+      </div>
+
+      <!-- Current Projects -->
+      <div class="panel" id="projects">
+        <h2>Current Projects</h2>
+        <ul class="about-list">
+          <li>How do changing goals change decision making and emotion?</li>
+          <li>How does dopamine affect decisions and emotions evoked by music?</li>
+          <li>How does sleep affect decisions and emotions in a depressed population?</li>
+          <li>How does stress affect free recall memory and its relationship to other types of memory?</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
+
   <script>
     function copyEmail(btn) {
       const email = btn.parentElement.dataset.email;
@@ -265,6 +404,13 @@
         tooltip.classList.add('visible');
         setTimeout(() => tooltip.classList.remove('visible'), 1500);
       });
+    }
+
+    function showPanel(id, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
     }
   </script>
 
